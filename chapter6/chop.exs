@@ -1,18 +1,22 @@
 defmodule Chop do
 
-	def guess(actual, bottom..top) when (div(top - bottom,2)+bottom) == actual do
+	def make_guess( actual, _, actual) do
 		IO.puts "It is #{actual}"
 	end
 
-
-	def guess(actual, bottom..top) when (div(top - bottom,2)+bottom) > actual do
-		IO.puts "Is it  #{div(top - bottom,2)+bottom} "
-		guess(actual, (bottom)..(div( top - bottom,2)+bottom-1))
+	def make_guess( actual, bottom..top, guess) when guess > actual do
+		IO.puts "Is it #{guess} ? "
+		guess(actual,(bottom)..(div( top - bottom,2)+bottom-1)) 
 	end
 
-	def guess(actual, bottom..top) when (div(top - bottom,2)+bottom) < actual do
-		IO.puts "Is it  #{div(top - bottom,2)+bottom} "
+	def make_guess( actual, bottom..top, guess) when guess < actual do
+		IO.puts "Is it #{guess} ? "
 		guess(actual, (div(top - bottom,2)+1+bottom)..top)
+	end
+
+
+	def guess(actual, bottom..top)  do
+		make_guess(actual, bottom..top, (div(top - bottom,2)+bottom))
 	end
 	
 end

@@ -45,6 +45,10 @@ defmodule Mylist do
 		dump inverse(_flatten(h, t, []))
 	end
 
+  def span(from, to ) when from > to do
+    []
+  end
+
   def span(from, from) do
     from
   end

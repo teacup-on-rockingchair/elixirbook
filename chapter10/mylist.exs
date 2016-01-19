@@ -49,13 +49,22 @@ defmodule Mylist do
     []
   end
 
-  def span(from, from) do
-    from
-  end
-
   def span(from, to) do
     [from | span(from+1, to)]
   end
+
+  def rem_all( num, list) do
+    Enum.all?(list,&( rem(num, &1) != 0))
+  end
+
+  def _primes(n) do
+    for x <- span(2, n), rem_all(x, span(2,x-1)), do: x
+  end
+
+  def primes(n) do
+    _primes(n)
+  end
+
 end
 
 #Mylist.flatten([ 1, [ 2, 3, [4] ], 5, [[[6]]]])

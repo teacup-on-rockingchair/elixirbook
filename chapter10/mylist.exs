@@ -57,12 +57,8 @@ defmodule Mylist do
     Enum.all?(list,&( rem(num, &1) != 0))
   end
 
-  def _primes(n) do
-    for x <- span(2, n), rem_all(x, span(2,x-1)), do: x
-  end
-
   def primes(n) do
-    _primes(n)
+    for x <- span(2, n), rem_all(x, span(2,x-1)), do: x
   end
 
 end
